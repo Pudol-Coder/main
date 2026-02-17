@@ -126,6 +126,27 @@
             background-color: #fffef0;
             transform: translateY(-3px);
         }
+        /* 상단 알림 메시지 스타일 */
+        .copy-notification {
+            position: fixed;
+            top: -60px; /* 처음에는 화면 밖에 숨김 */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #856404; /* 진한 머스터드 색상 */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+
+        /* 알림이 내려왔을 때의 위치 */
+        .copy-notification.show {
+            top: 30px;
+        }
     </style>
 </head>
 <body>
