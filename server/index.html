@@ -118,6 +118,29 @@
     </style>
 </head>
 <body>
+    <script>
+        function copyAndChangeText(element, text) {
+            // 클립보드 복사 실행
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = element.innerText;
+                
+                // 텍스트 변경
+                element.innerText = "복사 완료!"; 
+                element.style.backgroundColor = "#ffcc00"; 
+                element.style.color = "#ffffff";
+    
+                // 1초 뒤에 원래대로 복구
+                setTimeout(() => {
+                    element.innerText = originalText;
+                    element.style.backgroundColor = ""; 
+                    element.style.color = "";
+                }, 1000);
+            }).catch(err => {
+                // 예외 처리 (만약의 상황)
+                alert("복사에 실패했습니다. 직접 복사해 주세요!");
+            });
+        }
+    </script>
 
     <div class="container">
         <img src="Logo_2.png" class="logo" alt="Logo">
