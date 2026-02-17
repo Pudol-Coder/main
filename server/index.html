@@ -151,24 +151,21 @@
 
     <script>
         function copyAndChangeText(element, text) {
+            // 클립보드 복사 실행
             navigator.clipboard.writeText(text).then(() => {
-                const originalText = element.innerText;
-                
-                // 효과 적용
-                element.innerText = "복사 완료! ✅"; 
+                // 글자는 바꾸지 않고 배경색만 잠시 진하게 강조
                 element.style.backgroundColor = "#ffcc00"; 
                 element.style.color = "#ffffff";
-                element.style.borderColor = "#ffcc00";
-
-                // 1.2초 뒤에 복구
+                element.style.transform = "scale(0.95)"; // 클릭했을 때 살짝 눌리는 효과
+    
+                // 0.5초 뒤에 원래 스타일로 복구
                 setTimeout(() => {
-                    element.innerText = originalText;
                     element.style.backgroundColor = ""; 
                     element.style.color = "";
-                    element.style.borderColor = "";
-                }, 1200);
+                    element.style.transform = "";
+                }, 500);
             }).catch(err => {
-                alert("복사에 실패했습니다. 직접 복사해 주세요!");
+                console.error("복사 실패", err);
             });
         }
     </script>
