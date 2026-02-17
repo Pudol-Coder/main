@@ -1,15 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8"> <title>PUDOLY PUDOL</title>
-    </head>
-<body>
-    <h1>PUDOLY PUDOL</h1>
-    <p>test용으로 만든 사이트입니다</p>
-    <p>퍼돌이가 직접 만든거임 ㅎㅎ</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status - PUDOLY</title>
     
-    <hr>
-    <h3>🎮 서버 접속 정보</h3>
-    <p>주소: <b>pudol.kro.kr</b></p>
+    <style>
+        /* 1. 기본 배경 설정 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fffef0; /* 아주 연한 노란색 배경 */
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            color: #5D4037; /* 가독성 좋은 진한 갈색 글자 */
+        }
+
+        /* 2. 중앙 카드 컨테이너 */
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(255, 211, 0, 0.15); /* 노란색 톤 그림자 */
+            border: 2px solid #fff9c4;
+            max-width: 400px;
+            width: 90%;
+            /* 위치를 중앙보다 살짝 위로 (사용자님 취향 반영) */
+            margin-bottom: 15vh;
+        }
+
+        /* 3. 로고 애니메이션 (둥실둥실) */
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 4. 타이틀 및 텍스트 */
+        h1 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+            color: #856404; /* 머스터드 색상 */
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #7d6b41;
+            margin-bottom: 30px;
+        }
+
+        /* 5. 상태 바 (강조 포인트) */
+        .status-badge {
+            display: inline-block;
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            border: 1px solid #ffeeba;
+        }
+
+        /* 6. 버튼 디자인 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        /* 메인 노란색 버튼 */
+        .btn-primary {
+            background-color: #ffcc00;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+        }
+
+        /* 테두리 버튼 */
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #ffcc00;
+            color: #856404;
+        }
+
+        .btn-outline:hover {
+            background-color: #fff9c4;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="image_04c266.png" class="logo" alt="Logo">
+        
+        <h1>서버 안내</h1>
+        <p class="description">
+            현재 <b>더 나은 서비스</b>를 위해<br>
+            시스템 최적화 작업 중입니다.
+        </p>
+
+        <div class="status-badge">
+            🚧 점검 진행률: 85%
+        </div>
+
+        <div class="btn-group">
+            <a href="https://www.pudol.kro.kr/main" class="btn btn-primary">메인 페이지로 이동</a>
+            <a href="#" class="btn btn-outline" onclick="alert('곧 업데이트될 예정입니다!')">공지사항 보기</a>
+        </div>
+    </div>
+
 </body>
 </html>
