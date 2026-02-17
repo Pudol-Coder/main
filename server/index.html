@@ -7,197 +7,177 @@
     <title>서버 안내 - PUDOLY PUDOL</title>
     
     <style>
-        /* 1. 기본 배경 설정 */
+        /* 1. 기본 배경 및 레이아웃 설정 */
         body {
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #fffef0; /* 연한 노란색 배경 */
+            min-height: 100vh;
+            background-color: #fffef0;
             font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
             color: #5D4037;
         }
 
-        /* 2. 중앙 카드 컨테이너 */
+        /* 메인 래퍼: 왼쪽 정보와 오른쪽 카드를 감싸는 상자 */
+        .main-wrapper {
+            display: flex;
+            flex-direction: row; /* 좌우 배치 */
+            align-items: center;
+            gap: 60px; /* 좌우 간격 */
+            max-width: 1000px;
+            width: 90%;
+            padding: 40px 0;
+        }
+
+        /* 2. 왼쪽 섹션 (서버 소개 정보) */
+        .info-section {
+            flex: 1; /* 남은 공간을 차지 */
+            text-align: left;
+        }
+
+        .info-section h2 {
+            font-size: 2.2rem;
+            color: #856404;
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-item {
+            background-color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 20px;
+            border-left: 5px solid #ffcc00;
+            transition: transform 0.2s;
+        }
+
+        .info-item:hover {
+            transform: translateX(10px);
+            background-color: #ffffff;
+        }
+
+        .info-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: #856404;
+        }
+
+        .info-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #7d6b41;
+        }
+
+        /* 3. 오른쪽 섹션 (기존 카드 컨테이너) */
         .container {
+            flex: 0 0 380px; /* 크기 고정 */
             text-align: center;
             background-color: #ffffff;
             padding: 50px 40px;
-            border-radius: 40px; /* 더 둥글게 수정 */
+            border-radius: 40px;
             box-shadow: 0 20px 40px rgba(255, 211, 0, 0.12);
             border: 2px solid #fff9c4;
-            max-width: 380px;
-            width: 90%;
-            margin-bottom: 5vh; /* 위치 적정화 */
         }
 
-        /* 3. 로고 애니메이션 */
-        .logo {
-            width: 85px;
-            height: 85px;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-        }
-
-        /* 4. 타이틀 및 텍스트 */
-        h1 {
-            font-size: 1.8rem;
-            margin: 10px 0;
-            color: #856404;
-        }
-
-        .description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #7d6b41;
-            margin-bottom: 30px;
-        }
-
-        /* 5. 단일화된 복사 버튼 (기존 status-badge와 copy-text 통합) */
-        .copy-box {
-            display: inline-block;
-            cursor: pointer;
-            font-weight: bold;
-            color: #856404;
-            padding: 14px 24px;
-            border-radius: 15px;
-            background-color: #fff3cd; /* 부드러운 노랑 */
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            min-width: 220px;
-            text-align: center;
-            border: 1px solid #ffeeba;
-            user-select: none;
-            margin-bottom: 35px;
-        }
+        /* --- 기존 스타일 유지 --- */
+        .logo { width: 85px; height: 85px; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+        h1 { font-size: 1.8rem; margin: 10px 0; color: #856404; }
+        .description { font-size: 1rem; line-height: 1.6; color: #7d6b41; margin-bottom: 30px; }
         
-        .copy-box:hover {
-            background-color: #ffcc00;
-            color: #ffffff;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2);
+        .copy-box {
+            display: inline-block; cursor: pointer; font-weight: bold; color: #856404;
+            padding: 14px 24px; border-radius: 15px; background-color: #fff3cd;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 220px; text-align: center; border: 1px solid #ffeeba;
+            user-select: none; margin-bottom: 35px;
         }
+        .copy-box:hover { background-color: #ffcc00; color: #ffffff; transform: scale(1.03); }
 
-        .copy-box:active {
-            transform: scale(0.98);
-        }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .btn { display: block; padding: 15px; text-decoration: none; border-radius: 14px; font-weight: bold; transition: all 0.3s; }
+        .btn-primary { background-color: #ffcc00; color: white; }
+        .btn-primary:hover { background-color: #fbd84e; transform: translateY(-3px); }
 
-        /* 6. 버튼 디자인 */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn {
-            display: block;
-            padding: 15px;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background-color: #ffcc00;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2);
-        }
-
-        .btn-primary:hover {
-            background-color: #fbd84e; /* 조금 더 화사한 노랑 */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.3);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid #ffcc00;
-            color: #856404;
-        }
-
-        .btn-outline:hover {
-            background-color: #fffef0;
-            transform: translateY(-3px);
-        }
-        /* 상단 알림 메시지 스타일 */
+        /* 알림 메시지 스타일 */
         .copy-notification {
-            position: fixed;
-            top: -60px; /* 처음에는 화면 밖에 숨김 */
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #856404; /* 진한 머스터드 색상 */
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: fixed; top: -60px; left: 50%; transform: translateX(-50%);
+            background-color: #856404; color: white; padding: 12px 25px;
+            border-radius: 30px; font-size: 0.9rem; font-weight: bold; z-index: 1000;
             transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 1000;
         }
+        .copy-notification.show { top: 30px; }
 
-        /* 알림이 내려왔을 때의 위치 */
-        .copy-notification.show {
-            top: 30px;
+        /* 모바일 대응: 화면이 좁아지면 세로로 배치 */
+        @media (max-width: 850px) {
+            .main-wrapper { flex-direction: column; gap: 40px; text-align: center; }
+            .info-section { text-align: center; }
+            .info-item:hover { transform: translateY(-5px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="Logo_2.png" class="logo" alt="Logo">
-        
-        <h1>서버 안내</h1>
-        <p class="description">
-            현재 <b>재미있는 서버 생활</b>을 위해<br>
-            시스템 개발 중입니다.
-        </p>
-
-        <div class="copy-box" onclick="copyAndChangeText(this, 'pudol.kro.kr')">
-            서버 주소 : pudol.kro.kr
+    <div class="main-wrapper">
+        <div class="info-section">
+            <h2>About Server</h2>
+            <ul class="info-list">
+                <li class="info-item">
+                    <h3>🛡️ 보안 및 규칙</h3>
+                    <p>모두가 즐거운 환경을 위해 비매너 행위를 금지합니다.</p>
+                </li>
+                <li class="info-item">
+                    <h3>🌍 월드 안내</h3>
+                    <p>야생, 건축, 미니게임 등 다양한 월드가 준비 중입니다.</p>
+                </li>
+                <li class="info-item">
+                    <h3>📢 최신 업데이트</h3>
+                    <p>플러그인 최적화 및 신규 맵 제작이 진행되고 있습니다.</p>
+                </li>
+            </ul>
         </div>
 
-        <div class="btn-group">
-            <a href="https://www.pudol.kro.kr/main" class="btn btn-primary">메인 페이지로 이동</a>
-            <a href="#" class="btn btn-outline" onclick="alert('곧 업데이트될 예정입니다!')">공지사항 보기</a>
+        <div class="container">
+            <img src="Logo_2.png" class="logo" alt="Logo">
+            <h1>서버 안내</h1>
+            <p class="description">
+                현재 <b>재미있는 서버 생활</b>을 위해<br>
+                시스템 개발 중입니다.
+            </p>
+
+            <div class="copy-box" onclick="copyAndChangeText(this, 'pudol.kro.kr')">
+                서버 주소 : pudol.kro.kr
+            </div>
+
+            <div class="btn-group">
+                <a href="https://www.pudol.kro.kr/main" class="btn btn-primary">메인 페이지로 이동</a>
+                <a href="https://www.pudol.kro.kr/server/introduce" class="btn btn-primary">서버 소개 확인하기</a>
+            </div>
         </div>
     </div>
+
     <script>
         function copyAndChangeText(element, text) {
-            // 1. 클립보드 복사
             navigator.clipboard.writeText(text).then(() => {
-                
-                // 2. 알림 창(Toast) 만들기
                 const notification = document.createElement('div');
                 notification.className = 'copy-notification';
                 notification.innerText = "복사가 완료되었습니다! ✅";
                 document.body.appendChild(notification);
-    
-                // 3. 0.1초 뒤에 아래로 내리기 (애니메이션 시작)
-                setTimeout(() => {
-                    notification.classList.add('show');
-                }, 100);
-    
-                // 4. 2초 뒤에 다시 올리고 삭제하기
+
+                setTimeout(() => { notification.classList.add('show'); }, 100);
                 setTimeout(() => {
                     notification.classList.remove('show');
-                    // 애니메이션이 끝난 뒤 요소 삭제
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 400);
+                    setTimeout(() => { notification.remove(); }, 400);
                 }, 2000);
-    
-                // 5. 클릭 효과 (박스 살짝 눌림)
+
                 element.style.transform = "scale(0.96)";
                 setTimeout(() => { element.style.transform = ""; }, 100);
-    
             }).catch(err => {
                 alert("복사에 실패했습니다.");
             });
