@@ -6,22 +6,20 @@
     <title>Fast Moving - PUDOLY PUDOL</title>
     
     <style>
-        /* 배경 및 전체 정렬 */
         body {
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #ffffff; /* 깔끔한 흰색 배경 */
-            color: #333; /* 진한 회색 글자 */
+            background-color: #ffffff;
+            color: #333;
             font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
         }
 
-        /* 컨테이너 위치 조정 (중앙에서 위로 올림) */
         .container {
             text-align: center;
-            margin-bottom: 20vh; /* 시각적 중앙을 위해 위로 올림 */
+            margin-bottom: 20vh;
         }
 
         h1 {
@@ -36,52 +34,55 @@
             font-size: 1.1rem;
         }
 
-        /* 버튼 스타일 */
-        a {
+        /* 공통 버튼 스타일 */
+        .btn {
             display: inline-block;
             margin-top: 25px;
             padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+            margin-left: 5px; /* 버튼 사이 간격 */
+        }
+
+        /* 검은색 버튼 (메인) */
+        .btn-black {
             background-color: #333;
             color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.2s;
+            border: 2px solid #333;
         }
 
-        a:hover {
+        .btn-black:hover {
             background-color: #555;
-            transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+            border-color: #555;
+            transform: translateY(-2px);
         }
-        b {
-            display: inline-block;
-            margin-top: 25px;
+
+        /* 테두리 버튼 (서버 안내) */
+        .btn-outline {
             border: 2px solid #333333;
-            padding: 12px 24px;
             background-color: #ffffff;
             color: black;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.2s;
         }
 
-        b:hover {
-            background-color: #ffffff;
-            transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+        .btn-outline:hover {
+            background-color: #f5f5f5; /* 살짝 회색으로 변하게 */
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>빠른 이동</h1></h1>
+        <h1>빠른 이동</h1>
         <p class="description">
             메인이나 서버 안내로 이동하려면<br>
             아래 버튼 중 하나를 눌러주세요!
         </p>
         
-        <a href="https://www.pudol.kro.kr/main">메인으로 이동</a>
-        <b href="https://www.pudol.kro.kr/server">서버 안내로 이동</b>
+        <a href="https://www.pudol.kro.kr/main" class="btn btn-black">메인으로 이동</a>
+        <a href="https://www.pudol.kro.kr/server" class="btn btn-outline">서버 안내로 이동</a>
     </div>
 
 </body>
