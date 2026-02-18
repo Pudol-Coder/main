@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="icon" href="../Logo_2.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최신 업데이트 - PUDOLY</title>
+    
+    <style>
+        /* [기본 레이아웃 및 디자인] */
+        body {
+            margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
+            height: 100vh; background-color: #fffef0;
+            font-family: 'Apple SD Gothic Neo', sans-serif; color: #5D4037;
+            overflow: hidden;
+        }
+        .main-wrapper {
+            display: flex; flex-direction: row; align-items: center; gap: 60px;
+            max-width: 1000px; width: 90%; height: 80vh;
+        }
+
+        /* [왼쪽 메뉴 디자인] */
+        .info-section { flex: 1; text-align: left; }
+        .info-section h2 { font-size: 2.2rem; color: #856404; margin-bottom: 20px; }
+        .info-list { list-style: none; padding: 0; }
+        .info-item {
+            background-color: rgba(255, 255, 255, 0.6); margin-bottom: 15px; padding: 20px;
+            border-radius: 20px; border-left: 5px solid #ffcc00; transition: all 0.2s; cursor: pointer;
+        }
+        .info-item:hover { transform: translateX(10px); background-color: #ffffff; }
+        .info-item.active { 
+            background-color: #ffffff; border-left: 10px solid #ffcc00; 
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.15); 
+        }
+        .info-item h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #856404; }
+        .info-item p { margin: 0; font-size: 0.95rem; color: #7d6b41; }
+
+        /* [오른쪽 카드 및 내부 스크롤] */
+        .container {
+            flex: 0 0 380px; background-color: #ffffff; border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(255, 211, 0, 0.12); border: 2px solid #fff9c4;
+            height: 100%; overflow: hidden; display: flex; flex-direction: column;
+        }
+        .scroll-content { flex: 1; overflow-y: auto; padding: 40px 30px; text-align: center; }
+        .scroll-content::-webkit-scrollbar { width: 8px; }
+        .scroll-content::-webkit-scrollbar-thumb { background: #ffcc00; border-radius: 10px; }
+
+        .logo { width: 75px; height: 75px; margin-bottom: 15px; animation: float 3s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+        
+        h1 { font-size: 1.6rem; margin: 10px 0; color: #856404; }
+        .update-desc { font-size: 0.95rem; color: #7d6b41; margin-bottom: 25px; }
+
+        /* [업데이트 버튼 스타일] */
+        .btn-main-update {
+            display: block; padding: 18px; background-color: #ffcc00; color: white;
+            text-decoration: none; border-radius: 18px; font-weight: bold;
+            font-size: 1.1rem; margin-bottom: 30px; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        }
+        .btn-main-update:hover { background-color: #fbd84e; transform: translateY(-3px); }
+
+        /* [오래된 버전 그리드 (1행 2열)] */
+        .old-version-title { font-weight: bold; color: #856404; margin-bottom: 15px; font-size: 1rem; }
+        .version-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+        }
+        .version-btn {
+            display: block; padding: 12px; background-color: #fffef0; border: 1px solid #ffeeba;
+            text-decoration: none; border-radius: 12px; color: #856404; font-size: 0.85rem;
+            transition: 0.2s; font-weight: bold;
+        }
+        .version-btn:hover { background-color: #ffcc00; color: white; border-color: #ffcc00; }
+        .version-btn span { display: block; font-size: 0.7rem; color: #bca05d; margin-bottom: 2px; }
+        .version-btn:hover span { color: white; }
+
+        @media (max-width: 850px) {
+            body { overflow: auto; height: auto; }
+            .main-wrapper { flex-direction: column; height: auto; padding: 20px 0; }
+            .container { height: 600px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="info-section">
+            <h2><b>퍼돌이 서버</b></h2>
+            <ul class="info-list">
+                <li class="info-item" onclick="location.href='/server/introduce'">
+                    <h3>⭐ 서버 소개</h3>
+                    <p>퍼돌이 서버의 중요 정보들을 봐요!</p>
+                </li>
+                <li class="info-item" onclick="location.href='/server/rules'">
+                    <h3>🛡️ 보안 및 규칙</h3>
+                    <p>쾌적한 플레이를 위한 약속!</p>
+                </li>
+                <li class="info-item" onclick="location.href='/server/system'">
+                    <h3>🌐 시스템 설명</h3>
+                    <p>이거 모르면 플레이하기 어려움!</p>
+                </li>
+                <li class="info-item active" onclick="location.href='/server/updates'">
+                    <h3>📢 최신 업데이트</h3>
+                    <p>이거 궁금해서 오는 사람들이 더 많음..</p>
+                </li>
+                <li class="info-item" onclick="location.href='/server/map'">
+                    <h3>🌍 지도</h3>
+                    <p>서버가 켜지면 볼 수 있는 지도!</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="scroll-content">
+                <img src="../Logo_2.png" class="logo" alt="Logo">
+                <h1>최신 업데이트</h1>
+                <p class="update-desc">더 나은 퍼돌이 서버를 위해<br>항상 변화하고 있습니다.</p>
+
+                <a href="https://www.pudol.kro.kr/server/updates/v1.2.0" class="btn-main-update">
+                    🚀 최신 버전 확인 (v1.2.0)
+                </a>
+
+                <hr style="border: 0; height: 1px; background: #eee; margin-bottom: 25px;">
+
+                <div class="old-version-title">이전 버전 기록</div>
+                
+                <div class="version-grid">
+                    <a href="/server/updates/v1.1.5" class="version-btn">
+                        <span>Version</span> v1.1.5
+                    </a>
+                    <a href="/server/updates/v1.1.0" class="version-btn">
+                        <span>Version</span> v1.1.0
+                    </a>
+                    <a href="/server/updates/v1.0.5" class="version-btn">
+                        <span>Version</span> v1.0.5
+                    </a>
+                    <a href="/server/updates/v1.0.0" class="version-btn">
+                        <span>Version</span> v1.0.0
+                    </a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
